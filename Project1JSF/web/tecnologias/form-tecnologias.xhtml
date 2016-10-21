@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+--> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>#{str.formTecnologiesTitle}</title>
+    </h:head> 
+    <h:body>
+        <ui:composition template="/templates/template.xhtml">
+            <ui:define name ="contenido">
+                <h2>#{str.formTecnoligeHeader}</h2>
+                <p:fieldset legend="#{str.legendTecnologiesForm}">
+                    <h:form> 
+                        <h:panelGrid columns="1">
+                           
+                            <p:inputText placeholder="#{str.nameTecnologiesHeader}"
+                                         value="#{tecnologiaBean.tecnologia.nombreTecnologia}"></p:inputText>
+                                         <p:inputText placeholder="#{str.typeTecnologieHeader}"
+                                                      value="#{tecnologiaBean.tecnologia.tipoTecnologia}"></p:inputText>
+                                         <p:inputText placeholder="#{str.verTeclogieHeader}"
+                                                      value="#{tecnologiaBean.tecnologia.version}"></p:inputText>
+                        </h:panelGrid>
+                        <p:commandButton value="#{str.buttonSave}"
+                                         action="#{tecnologiaBean.guardar()}"></p:commandButton>
+                        <p:commandButton value="#{str.buttonDelete}"
+                                         action="#{tecnologiaBean.eliminar()}"></p:commandButton>
+                        <p:commandButton value="#{str.buttonCancel}"
+                                         action="#{tecnologiaBean.cancelar()}"></p:commandButton>
+                    </h:form>
+                </p:fieldset>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

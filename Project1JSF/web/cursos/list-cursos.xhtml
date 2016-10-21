@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>#{str.cursesListTitle}</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/templates/template.xhtml">
+            <ui:define name="contenido">
+                <h1>#{str.cursesListTitle}</h1>
+                <h:form>
+                    <p:commandButton value="#{str.buttonAdd}"
+                                     action="#{cursoBean.iniciar()}"></p:commandButton>                          
+                </h:form>
+                <p:dataTable value="#{cursoBean.cursos}" var="c">
+                    <p:column headerText="#{str.action}">
+                        <h:form>
+                            <p:commandButton value="#{str.buttonEdit}"
+                                             action="#{cursoBean.editar(c)}"></p:commandButton>
+                        </h:form>
+                    </p:column>
+                    <p:column headerText="#{str.idCurseHeader}">
+                        <p:outputLabel value="#{c.idCurso}"></p:outputLabel>
+                    </p:column>
+                    <p:column headerText="#{str.nameCurseHeader}">
+                        <p:outputLabel value="#{c.nombreCurso}"></p:outputLabel>
+                    </p:column>
+                    <p:column headerText="#{str.typeCurseHeader}">
+                        <p:outputLabel value="#{c.tipoCurso}"></p:outputLabel>
+                    </p:column>
+                    <p:column headerText="#{str.durationPrompt}">
+                        <p:outputLabel value="#{c.duracion}"></p:outputLabel>
+                    </p:column>
+                    <p:column headerText="#{str.nameTecnologiesHeader}">
+                        <p:outputLabel value="#{c.tecnologia.nombreTecnologia}"></p:outputLabel>
+                    </p:column>
+                    
+                    
+                </p:dataTable>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+
